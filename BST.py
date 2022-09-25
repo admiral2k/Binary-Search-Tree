@@ -24,7 +24,7 @@ class BSTNode:
                 self.right = BSTNode(val)
 
     def delete(self, val):
-        if self == None:
+        if self is None:
             return self
         if val < self.val:
             if self.left:
@@ -34,9 +34,9 @@ class BSTNode:
             if self.right:
                 self.right = self.right.delete(val)
             return self
-        if self.right == None:
+        if self.right is None:
             return self.left
-        if self.left == None:
+        if self.left is None:
             return self.right
         min_larger_node = self.right
         while min_larger_node.left:
@@ -94,17 +94,3 @@ class BSTNode:
         if self.val:
             vals.append(self.val)
         return vals
-
-
-node = BSTNode()
-node.insert(5)
-node.insert(4)
-node.insert(8)
-node.insert(4554)
-node.insert(123)
-node.insert(1)
-node.delete(4554)
-print(node.inorder())
-print(node.preorder())
-print(node.postorder())
-print(node.min(), node.max())
