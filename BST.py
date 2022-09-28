@@ -23,9 +23,6 @@ class BSTNode:
             else:
                 self.right = BSTNode(val)
 
-    def delete(self, val):
-        pass
-
     def min(self):
         if self.left:
             res = self.left.min()
@@ -55,6 +52,20 @@ class BSTNode:
                 return False
         return res
 
+    def find(self, val):
+        if self.val == val:
+            return self
+        if val > self.val:
+            if self.right:
+                res = self.right.exist(val)
+            else:
+                return None
+        if val < self.val:
+            if self.left:
+                res = self.left.exist(val)
+            else:
+                return None
+        return res
 
     def height(self):
         if self.val:
@@ -76,8 +87,7 @@ class BSTNode:
     def __inorder(self, vals=[]):
         if self.left:
             self.left.__inorder(vals)
-        if self.val:
-            vals.append(self.val)
+        vals.append(self.val)
         if self.right:
             self.right.__inorder(vals)
         return vals
@@ -86,8 +96,7 @@ class BSTNode:
         return self.__preorder()
 
     def __preorder(self, vals=[]):
-        if self.val:
-            vals.append(self.val)
+        vals.append(self.val)
         if self.left:
             self.left.__preorder(vals)
         if self.right:
@@ -102,6 +111,5 @@ class BSTNode:
             self.left.__postorder(vals)
         if self.right:
             self.right.__postorder(vals)
-        if self.val:
-            vals.append(self.val)
+        vals.append(self.val)
         return vals
