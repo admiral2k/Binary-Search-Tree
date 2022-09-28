@@ -40,6 +40,22 @@ class BSTNode:
             return self.val
         return res
 
+    def exist(self, val):
+        if self.val == val:
+            return True
+        if val > self.val:
+            if self.right:
+                res = self.right.exist(val)
+            else:
+                return False
+        if val < self.val:
+            if self.left:
+                res = self.left.exist(val)
+            else:
+                return False
+        return res
+
+
     def height(self):
         if self.val:
             height = self.__height(0, [0])
